@@ -26,11 +26,11 @@ func CsvCmd() *cobra.Command {
 
 	splitCmd.Flags().String("parts", "", "Comma-separated parts like 1,10,rest (required)")
 	if err := splitCmd.MarkFlagRequired("parts"); err != nil {
-		slog.Error("failed to mark --parts as required", slog.Any("err", err))
+		slog.Error("failed to mark --parts as required", "err", err)
 		return nil
 	}
 
-	splitCmd.Flags().String("out-dir", "output", "Output directory for generated part files (optional)")
+	splitCmd.Flags().String("out-dir", "./", "Output directory for generated part files (optional)")
 
 	splitCmd.RunE = func(cmd *cobra.Command, args []string) error {
 		csvFile := args[0]
