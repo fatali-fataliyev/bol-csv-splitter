@@ -6,16 +6,16 @@ A small CLI tool to split large **CSV** files into smaller _non-overlapping_ par
 
 ## Installation
 
-**1.** Clone repository.
+**1.** Go install.
 
 ```bash
-git clone https://github.com/fatali-fataliyev/bol-csv-splitter
+go install github.com/fatali-fataliyev/bol-csv-splitter@latest
 ```
 
-**2.** Build app.
+**2.** Test installation.
 
 ```bash
-go build -o bol
+bol-csv-splitter --help
 ```
 
 ---
@@ -25,10 +25,10 @@ go build -o bol
 Example input file is `customers.csv` with 1200 rows.
 
 ```bash
-bol csv split customers.csv --parts=1,10,rest --out-dir=myFolder
+bol-csv-splitter csv split customers.csv --parts=1,10,rest --out-dir=path/to/dir
 ```
 
-You will get these results::
+You will get these results:
 
 ```
 customers_part1_1row.csv --> header + 1 row
@@ -42,8 +42,6 @@ customers_part3_rest_1189_rows.csv --> header + all remaining rows
 
 - `--parts` flag is required. Example: `1,15,rest`
 
-- `--out-dir` is optional (default: output)
+- `--out-dir` is optional (default: current working directory)
 
-- Existing files will be overwritten.
-
-- Output directory will be created if missing.
+- [!] Existing files will be overwritten.
